@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#000066">
     <title>Portal Nauta</title>
     <style>
         * {
@@ -12,179 +13,388 @@
         }
         
         body {
-            background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0066cc;
+            font-family: 'MyriadPro-LightCond', Arial, sans-serif;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             color: white;
+            overflow-x: hidden;
         }
         
-        .login-container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 40px;
-            width: 90%;
-            max-width: 400px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        /* HEADER STYLES */
+        .header {
+            background: #000066;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .logo {
+            height: 40px;
+            width: auto;
+        }
+        
+        .portal-title {
+            font-family: 'MyriadPro-BoldCond', sans-serif;
+            font-size: 1.8em;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .icon-button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        .icon-button:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        /* MAIN CONTENT */
+        .main-container {
+            display: flex;
+            min-height: calc(100vh - 64px);
+        }
+        
+        /* SIDEBAR */
+        .sidebar {
+            background: white;
+            width: 350px;
+            min-height: 100%;
+            box-shadow: 2px 0 4px rgba(0,0,0,0.1);
+        }
+        
+        .user-section {
+            background: #000066;
+            color: white;
+            padding: 20px;
             text-align: center;
-            margin-bottom: 30px;
         }
         
-        .logo h1 {
-            font-size: 2.5em;
+        .user-icon {
+            font-size: 40px;
             margin-bottom: 10px;
-            background: linear-gradient(45deg, #fff, #aad);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
         
-        .logo p {
-            opacity: 0.8;
-            font-size: 0.9em;
+        .user-text {
+            font-family: 'MyriadPro-SemiboldCond', sans-serif;
+            font-size: 15pt;
+            color: #000066;
+        }
+        
+        .user-text-active {
+            color: #000066;
+        }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+        }
+        
+        .menu-item:hover {
+            background: #3399cc;
+        }
+        
+        .menu-item.active {
+            background: #3399cc;
+            color: #000066;
+        }
+        
+        .menu-icon {
+            width: 35px;
+            height: 35px;
+            margin-right: 10px;
+        }
+        
+        .menu-text {
+            font-family: 'MyriadPro-SemiboldCond', sans-serif;
+            font-size: 15pt;
+            flex-grow: 1;
+        }
+        
+        .divider {
+            height: 1px;
+            background: #3399cc;
+            margin: 10px 40px;
+        }
+        
+        /* CONTENT AREA */
+        .content {
+            flex-grow: 1;
+            padding: 40px;
+            background: #f5f5f5;
+        }
+        
+        .login-container {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            max-width: 400px;
+            margin: 50px auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .login-title {
+            color: #0066cc;
+            font-size: 24px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-family: 'MyriadPro-BoldCond', sans-serif;
         }
         
         .form-group {
             margin-bottom: 20px;
         }
         
-        .form-group label {
+        .form-label {
             display: block;
+            color: #333;
             margin-bottom: 8px;
             font-weight: 500;
         }
         
-        .form-group input {
+        .form-input {
             width: 100%;
             padding: 12px 15px;
-            border: none;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #ddd;
+            border-radius: 6px;
             font-size: 16px;
-            transition: all 0.3s ease;
+            transition: border-color 0.3s;
         }
         
-        .form-group input:focus {
+        .form-input:focus {
             outline: none;
-            background: white;
-            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+            border-color: #0066cc;
         }
         
-        .btn-login {
+        .login-button {
             width: 100%;
             padding: 12px;
             background: linear-gradient(45deg, #ff6b6b, #ee5a24);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 10px;
+            transition: all 0.3s;
         }
         
-        .btn-login:hover {
+        .login-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
         
         .links {
-            margin-top: 25px;
+            margin-top: 20px;
             text-align: center;
         }
         
-        .links a {
-            color: #aad;
+        .link {
+            color: #0066cc;
             text-decoration: none;
             margin: 0 10px;
-            font-size: 0.9em;
+            font-size: 14px;
         }
         
-        .links a:hover {
+        .link:hover {
             text-decoration: underline;
         }
         
+        /* FOOTER */
         .footer {
-            margin-top: 30px;
             text-align: center;
-            opacity: 0.7;
-            font-size: 0.8em;
+            padding: 20px;
+            background: #000066;
+            color: white;
+            font-family: 'MyriadPro-LightCond', sans-serif;
+            font-size: 13pt;
         }
         
-        @media (max-width: 480px) {
-            .login-container {
-                padding: 30px 20px;
-                margin: 20px;
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: fixed;
+                z-index: 1000;
+                transform: translateX(-100%);
+                transition: transform 0.3s;
             }
             
-            .logo h1 {
-                font-size: 2em;
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .portal-title {
+                font-size: 1.4em;
             }
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <div class="logo">
-            <h1>🌐 Nauta</h1>
-            <p>Portal de acceso a Internet</p>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo-container">
+            <button class="icon-button" id="menuToggle">☰</button>
+            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgMTIwIDQwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0xMCAxMEgzMFYzMEgxMFYxMFoiIGZpbGw9IiNGRkYiLz48dGV4dCB4PSIzNSIgeT0iMjUiIGZpbGw9IiNGRkYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCI+TkFVVEE8L3RleHQ+PC9zdmc+" alt="Nauta" class="logo">
+            <h1 class="portal-title">Portal Nauta</h1>
         </div>
         
-        <form id="loginForm">
-            <div class="form-group">
-                <label for="username">Usuario:</label>
-                <input type="text" id="username" placeholder="usuario@nauta.co.cu" required>
+        <div class="header-actions">
+            <button class="icon-button" title="Idioma">🌐</button>
+            <button class="icon-button" title="Ayuda">❓</button>
+            <button class="icon-button" title="Cerrar Sesión">🚪</button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="user-section">
+                <div class="user-icon">👤</div>
+                <div class="user-text user-text-active">Mi Cliente</div>
             </div>
             
-            <div class="form-group">
-                <label for="password">Contraseña:</label>
-                <input type="password" id="password" placeholder="••••••••" required>
-            </div>
+            <div class="divider"></div>
             
-            <button type="submit" class="btn-login">Iniciar Sesión</button>
-        </form>
-        
-        <div class="links">
-            <a href="#">¿Olvidó su contraseña?</a>
-            <a href="#">Crear cuenta</a>
-        </div>
-        
-        <div class="footer">
-            <p>ETECSA &copy; 2024 - Todos los derechos reservados</p>
-        </div>
+            <!-- MENU ITEMS -->
+            <button class="menu-item active">
+                <span class="menu-icon">📧</span>
+                <span class="menu-text">Correo</span>
+                <span>▼</span>
+            </button>
+            
+            <button class="menu-item">
+                <span class="menu-icon">🌐</span>
+                <span class="menu-text">Navegación</span>
+                <span>▼</span>
+            </button>
+            
+            <button class="menu-item">
+                <span class="menu-icon">📱</span>
+                <span class="menu-text">Servicios Móviles</span>
+                <span>▼</span>
+            </button>
+            
+            <button class="menu-item">
+                <span class="menu-icon">🏠</span>
+                <span class="menu-text">Nauta Hogar</span>
+                <span>▼</span>
+            </button>
+            
+            <button class="menu-item">
+                <span class="menu-icon">⭐</span>
+                <span class="menu-text">Nauta Plus</span>
+                <span>▼</span>
+            </button>
+            
+            <button class="menu-item">
+                <span class="menu-icon">📞</span>
+                <span class="menu-text">Telefonía Fija</span>
+                <span>▼</span>
+            </button>
+            
+            <button class="menu-item">
+                <span class="menu-icon">📡</span>
+                <span class="menu-text">Internet Fijo Inalámbrico</span>
+                <span>▼</span>
+            </button>
+            
+            <button class="menu-item">
+                <span class="menu-icon">🗺️</span>
+                <span class="menu-text">Mapa de Cobertura</span>
+                <span>▼</span>
+            </button>
+        </aside>
+
+        <!-- CONTENT -->
+        <main class="content">
+            <div class="login-container">
+                <h2 class="login-title">Iniciar Sesión</h2>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username" class="form-label">Usuario:</label>
+                        <input type="text" id="username" class="form-input" placeholder="usuario@nauta.co.cu" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password" class="form-label">Contraseña:</label>
+                        <input type="password" id="password" class="form-input" placeholder="••••••••" required>
+                    </div>
+                    
+                    <button type="submit" class="login-button">Iniciar Sesión</button>
+                </form>
+                
+                <div class="links">
+                    <a href="#" class="link">¿Olvidó su contraseña?</a>
+                    <a href="#" class="link">Crear cuenta</a>
+                </div>
+            </div>
+        </main>
     </div>
 
+    <!-- FOOTER -->
+    <footer class="footer">
+        Copyright © Portal Nauta 2024
+    </footer>
+
     <script>
-        // Script simple para el formulario
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('open');
+        });
+
+        // Login form handling
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             
             if(username && password) {
-                alert('📧 Iniciando sesión: ' + username + '\n\n(Esta es una demostración funcional)');
-                // Aquí iría la lógica real de login
+                alert('Iniciando sesión: ' + username + '\n\n(Demo funcional del Portal Nauta)');
             } else {
-                alert('⚠️ Por favor complete todos los campos');
+                alert('Por favor complete todos los campos');
             }
         });
-        
-        // Efecto de carga inicial
-        window.addEventListener('load', function() {
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.5s ease';
-            
-            setTimeout(function() {
-                document.body.style.opacity = '1';
-            }, 100);
+
+        // Menu item interactions
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
         });
     </script>
 </body>
