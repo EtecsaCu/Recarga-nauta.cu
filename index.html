@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="theme-color" content="#000066">
+    <meta charset="utf-8"/>
+    <link rel="icon" href="./favicon.ico"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="theme-color" content="#000000"/>
+    <meta name="description" content="Portal Nauta - Servicios de Internet"/>
     <title>Portal Nauta</title>
     <style>
+        /* ESTILOS GENERALES */
         * {
             margin: 0;
             padding: 0;
@@ -13,389 +16,297 @@
         }
         
         body {
-            background: #0066cc;
-            font-family: 'MyriadPro-LightCond', Arial, sans-serif;
-            min-height: 100vh;
+            font-family: 'MyriadPro-Cond', Arial, sans-serif;
+            background-color: #000066;
             color: white;
-            overflow-x: hidden;
+            height: 100vh;
+            overflow: hidden;
         }
         
-        /* HEADER STYLES */
-        .header {
-            background: #000066;
-            height: 64px;
+        /* CONTENEDOR PRINCIPAL */
+        .login-container {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            height: 100vh;
         }
         
-        .logo-container {
+        /* PANEL IZQUIERDO - LOGO */
+        .logo-section {
+            flex: 1;
+            background: linear-gradient(135deg, #000066 0%, #3399cc 100%);
             display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            gap: 10px;
+            padding: 20px;
         }
         
         .logo {
-            height: 40px;
-            width: auto;
+            width: 300px;
+            height: auto;
+            margin-bottom: 30px;
         }
         
-        .portal-title {
+        .logo-title {
             font-family: 'MyriadPro-BoldCond', sans-serif;
-            font-size: 1.8em;
-            font-weight: bold;
+            font-size: 2.5em;
             color: white;
-        }
-        
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .icon-button {
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            padding: 8px;
-            border-radius: 4px;
-            transition: background 0.3s;
-        }
-        
-        .icon-button:hover {
-            background: rgba(255,255,255,0.1);
-        }
-        
-        /* MAIN CONTENT */
-        .main-container {
-            display: flex;
-            min-height: calc(100vh - 64px);
-        }
-        
-        /* SIDEBAR */
-        .sidebar {
-            background: white;
-            width: 350px;
-            min-height: 100%;
-            box-shadow: 2px 0 4px rgba(0,0,0,0.1);
-        }
-        
-        .user-section {
-            background: #000066;
-            color: white;
-            padding: 20px;
             text-align: center;
-        }
-        
-        .user-icon {
-            font-size: 40px;
             margin-bottom: 10px;
         }
         
-        .user-text {
-            font-family: 'MyriadPro-SemiboldCond', sans-serif;
-            font-size: 15pt;
-            color: #000066;
-        }
-        
-        .user-text-active {
-            color: #000066;
-        }
-        
-        .menu-item {
-            display: flex;
-            align-items: center;
-            padding: 15px 20px;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: none;
-            background: none;
-            width: 100%;
-            text-align: left;
-        }
-        
-        .menu-item:hover {
-            background: #3399cc;
-        }
-        
-        .menu-item.active {
-            background: #3399cc;
-            color: #000066;
-        }
-        
-        .menu-icon {
-            width: 35px;
-            height: 35px;
-            margin-right: 10px;
-        }
-        
-        .menu-text {
-            font-family: 'MyriadPro-SemiboldCond', sans-serif;
-            font-size: 15pt;
-            flex-grow: 1;
-        }
-        
-        .divider {
-            height: 1px;
-            background: #3399cc;
-            margin: 10px 40px;
-        }
-        
-        /* CONTENT AREA */
-        .content {
-            flex-grow: 1;
-            padding: 40px;
-            background: #f5f5f5;
-        }
-        
-        .login-container {
-            background: white;
-            border-radius: 10px;
-            padding: 40px;
-            max-width: 400px;
-            margin: 50px auto;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-        
-        .login-title {
-            color: #0066cc;
-            font-size: 24px;
-            margin-bottom: 30px;
+        .logo-subtitle {
+            font-family: 'MyriadPro-LightCond', sans-serif;
+            font-size: 1.2em;
+            color: #3399cc;
             text-align: center;
-            font-family: 'MyriadPro-BoldCond', sans-serif;
         }
         
-        .form-group {
+        /* PANEL DERECHO - FORMULARIO */
+        .form-section {
+            flex: 1;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+        
+        .login-form {
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .form-title {
+            font-family: 'MyriadPro-BoldCond', sans-serif;
+            font-size: 2em;
+            color: #000066;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        /* INPUTS */
+        .input-group {
             margin-bottom: 20px;
         }
         
-        .form-label {
+        .input-label {
             display: block;
-            color: #333;
-            margin-bottom: 8px;
-            font-weight: 500;
+            font-family: 'MyriadPro-SemiboldCond', sans-serif;
+            color: #666666;
+            margin-bottom: 5px;
+            font-size: 1.1em;
         }
         
-        .form-input {
+        .input-field {
             width: 100%;
             padding: 12px 15px;
-            border: 2px solid #ddd;
-            border-radius: 6px;
-            font-size: 16px;
-            transition: border-color 0.3s;
+            border: 2px solid #3399cc;
+            border-radius: 0;
+            font-family: 'MyriadPro-SemiCn', sans-serif;
+            font-size: 1em;
+            background-color: white;
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
         }
         
-        .form-input:focus {
+        .input-field:focus {
             outline: none;
-            border-color: #0066cc;
+            border-color: #000066;
         }
         
-        .login-button {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .login-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-        
-        .links {
-            margin-top: 20px;
+        /* CAPTCHA */
+        .captcha-container {
+            background-color: #f0f0f0;
+            padding: 15px;
+            margin: 20px 0;
             text-align: center;
+            border: 1px solid #ddd;
+        }
+        
+        .captcha-text {
+            font-family: 'MyriadPro-Black', sans-serif;
+            font-size: 1.5em;
+            letter-spacing: 3px;
+            color: #000066;
+        }
+        
+        /* BOTONES */
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            font-family: 'MyriadPro-Cond', sans-serif;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            clip-path: polygon(100% 0, 100% 78%, 90% 100%, 0 100%, 0 0);
+        }
+        
+        .btn-primary {
+            background-color: #000066;
+            color: white;
+            flex: 2;
+        }
+        
+        .btn-primary:hover {
+            background-color: #3399cc;
+            color: #000066;
+        }
+        
+        .btn-secondary {
+            background-color: #cccccc;
+            color: #666666;
+            flex: 1;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #999999;
+            color: white;
+        }
+        
+        /* ENLACES */
+        .links {
+            text-align: center;
+            margin-top: 20px;
         }
         
         .link {
-            color: #0066cc;
+            color: #3399cc;
             text-decoration: none;
+            font-family: 'MyriadPro-LightCond', sans-serif;
             margin: 0 10px;
-            font-size: 14px;
         }
         
         .link:hover {
+            color: #000066;
             text-decoration: underline;
-        }
-        
-        /* FOOTER */
-        .footer {
-            text-align: center;
-            padding: 20px;
-            background: #000066;
-            color: white;
-            font-family: 'MyriadPro-LightCond', sans-serif;
-            font-size: 13pt;
         }
         
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            .sidebar {
-                width: 100%;
-                position: fixed;
-                z-index: 1000;
-                transform: translateX(-100%);
-                transition: transform 0.3s;
+            .login-container {
+                flex-direction: column;
             }
             
-            .sidebar.open {
-                transform: translateX(0);
+            .logo-section {
+                padding: 40px 20px;
             }
             
-            .content {
+            .logo {
+                width: 200px;
+            }
+            
+            .form-section {
                 padding: 20px;
             }
-            
-            .portal-title {
-                font-size: 1.4em;
-            }
+        }
+        
+        /* FUENTES EMBEBIDAS */
+        @font-face {
+            font-family: "MyriadPro-Black";
+            src: url("data:font/opentype;base64,/* Base64 de la fuente */") format("opentype");
+        }
+        
+        @font-face {
+            font-family: "MyriadPro-Cond";
+            src: local("Arial"), sans-serif;
+        }
+        
+        @font-face {
+            font-family: "MyriadPro-LightCond";
+            src: local("Arial"), sans-serif;
+        }
+        
+        @font-face {
+            font-family: "MyriadPro-SemiboldCond";
+            src: local("Arial"), sans-serif;
+        }
+        
+        @font-face {
+            font-family: "MyriadPro-SemiCn";
+            src: local("Arial"), sans-serif;
+        }
+        
+        @font-face {
+            font-family: "MyriadPro-BoldCond";
+            src: local("Arial"), sans-serif;
         }
     </style>
 </head>
 <body>
-    <!-- HEADER -->
-    <header class="header">
-        <div class="logo-container">
-            <button class="icon-button" id="menuToggle">☰</button>
-            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgMTIwIDQwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0xMCAxMEgzMFYzMEgxMFYxMFoiIGZpbGw9IiNGRkYiLz48dGV4dCB4PSIzNSIgeT0iMjUiIGZpbGw9IiNGRkYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCI+TkFVVEE8L3RleHQ+PC9zdmc+" alt="Nauta" class="logo">
-            <h1 class="portal-title">Portal Nauta</h1>
+    <div class="login-container">
+        <!-- PANEL IZQUIERDO - LOGO -->
+        <div class="logo-section">
+            <div class="logo-placeholder">
+                <div style="width: 300px; height: 100px; background: linear-gradient(45deg, #3399cc, #000066); display: flex; align-items: center; justify-content: center; margin-bottom: 30px;">
+                    <span style="color: white; font-family: 'MyriadPro-BoldCond', sans-serif; font-size: 2em;">NAUTA</span>
+                </div>
+            </div>
+            <h1 class="logo-title">Portal del Usuario</h1>
+            <p class="logo-subtitle">Gestione sus servicios de internet</p>
         </div>
         
-        <div class="header-actions">
-            <button class="icon-button" title="Idioma">🌐</button>
-            <button class="icon-button" title="Ayuda">❓</button>
-            <button class="icon-button" title="Cerrar Sesión">🚪</button>
-        </div>
-    </header>
-
-    <!-- MAIN CONTENT -->
-    <div class="main-container">
-        <!-- SIDEBAR -->
-        <aside class="sidebar" id="sidebar">
-            <div class="user-section">
-                <div class="user-icon">👤</div>
-                <div class="user-text user-text-active">Mi Cliente</div>
-            </div>
-            
-            <div class="divider"></div>
-            
-            <!-- MENU ITEMS -->
-            <button class="menu-item active">
-                <span class="menu-icon">📧</span>
-                <span class="menu-text">Correo</span>
-                <span>▼</span>
-            </button>
-            
-            <button class="menu-item">
-                <span class="menu-icon">🌐</span>
-                <span class="menu-text">Navegación</span>
-                <span>▼</span>
-            </button>
-            
-            <button class="menu-item">
-                <span class="menu-icon">📱</span>
-                <span class="menu-text">Servicios Móviles</span>
-                <span>▼</span>
-            </button>
-            
-            <button class="menu-item">
-                <span class="menu-icon">🏠</span>
-                <span class="menu-text">Nauta Hogar</span>
-                <span>▼</span>
-            </button>
-            
-            <button class="menu-item">
-                <span class="menu-icon">⭐</span>
-                <span class="menu-text">Nauta Plus</span>
-                <span>▼</span>
-            </button>
-            
-            <button class="menu-item">
-                <span class="menu-icon">📞</span>
-                <span class="menu-text">Telefonía Fija</span>
-                <span>▼</span>
-            </button>
-            
-            <button class="menu-item">
-                <span class="menu-icon">📡</span>
-                <span class="menu-text">Internet Fijo Inalámbrico</span>
-                <span>▼</span>
-            </button>
-            
-            <button class="menu-item">
-                <span class="menu-icon">🗺️</span>
-                <span class="menu-text">Mapa de Cobertura</span>
-                <span>▼</span>
-            </button>
-        </aside>
-
-        <!-- CONTENT -->
-        <main class="content">
-            <div class="login-container">
-                <h2 class="login-title">Iniciar Sesión</h2>
+        <!-- PANEL DERECHO - FORMULARIO -->
+        <div class="form-section">
+            <form class="login-form" id="loginForm">
+                <h2 class="form-title">Acceder</h2>
                 
-                <form id="loginForm">
-                    <div class="form-group">
-                        <label for="username" class="form-label">Usuario:</label>
-                        <input type="text" id="username" class="form-input" placeholder="usuario@nauta.co.cu" required>
+                <div class="input-group">
+                    <label class="input-label">Usuario</label>
+                    <input type="text" class="input-field" placeholder="Ingrese su usuario" required>
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label">Contraseña</label>
+                    <input type="password" class="input-field" placeholder="Ingrese su contraseña" required>
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label">Captcha</label>
+                    <div class="captcha-container">
+                        <span class="captcha-text">A3B7C2</span>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="password" class="form-label">Contraseña:</label>
-                        <input type="password" id="password" class="form-input" placeholder="••••••••" required>
-                    </div>
-                    
-                    <button type="submit" class="login-button">Iniciar Sesión</button>
-                </form>
+                    <input type="text" class="input-field" placeholder="Ingrese el captcha" required>
+                </div>
+                
+                <div class="button-group">
+                    <button type="submit" class="btn btn-primary">Acceder</button>
+                    <button type="button" class="btn btn-secondary">Cancelar</button>
+                </div>
                 
                 <div class="links">
                     <a href="#" class="link">¿Olvidó su contraseña?</a>
-                    <a href="#" class="link">Crear cuenta</a>
+                    <a href="#" class="link">Registrarse</a>
                 </div>
-            </div>
-        </main>
+            </form>
+        </div>
     </div>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        Copyright © Portal Nauta 2024
-    </footer>
-
     <script>
-        // Mobile menu toggle
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            document.getElementById('sidebar').classList.toggle('open');
-        });
-
-        // Login form handling
+        // JavaScript básico para el formulario
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            if(username && password) {
-                alert('Iniciando sesión: ' + username + '\n\n(Demo funcional del Portal Nauta)');
-            } else {
-                alert('Por favor complete todos los campos');
+            // Aquí iría la lógica de login
+            alert('Funcionalidad de login - Para implementar');
+        });
+        
+        // Generar captcha aleatorio
+        function generateCaptcha() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let captcha = '';
+            for (let i = 0; i < 6; i++) {
+                captcha += chars.charAt(Math.floor(Math.random() * chars.length));
             }
-        });
-
-        // Menu item interactions
-        document.querySelectorAll('.menu-item').forEach(item => {
-            item.addEventListener('click', function() {
-                document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
+            document.querySelector('.captcha-text').textContent = captcha;
+        }
+        
+        // Generar captcha al cargar
+        generateCaptcha();
     </script>
 </body>
 </html>
