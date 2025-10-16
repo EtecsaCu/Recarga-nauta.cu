@@ -13,7 +13,7 @@
         }
 
         body {
-            background-color: #1e3a8a; /* Azul más claro */
+            background-color: #1e3a8a;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -23,11 +23,11 @@
 
         .login-container {
             background-color: white;
-            border-radius: 10px;
-            padding: 50px 35px; /* Más espacio interno */
+            border-radius: 0px; /* Puntas cuadradas */
+            padding: 50px 35px;
             width: 100%;
-            max-width: 450px; /* Un poco más ancho */
-            height: 480px; /* Más alto - rectangular vertical */
+            max-width: 450px;
+            height: 480px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -36,16 +36,18 @@
 
         .logo {
             text-align: center;
-            margin-bottom: 45px; /* Más espacio */
+            margin-bottom: 45px;
             font-size: 28px;
             font-weight: bold;
             color: #1e3a8a;
             text-transform: uppercase;
             letter-spacing: 1px;
+            border-bottom: 2px solid #1e3a8a; /* Línea recta debajo */
+            padding-bottom: 15px;
         }
 
         .form-group {
-            margin-bottom: 30px; /* Más espacio entre campos */
+            margin-bottom: 30px;
         }
 
         label {
@@ -59,8 +61,8 @@
         .input-with-prefix {
             display: flex;
             align-items: center;
-            border: 2px solid #ddd; /* Marco más definido */
-            border-radius: 8px;
+            border: 2px solid #1e3a8a; /* Borde azul */
+            border-radius: 0px; /* Puntas cuadradas */
             overflow: hidden;
             transition: border-color 0.3s;
         }
@@ -72,7 +74,7 @@
         .prefix {
             background-color: #f8f9fa;
             padding: 14px 16px;
-            border-right: 2px solid #ddd;
+            border-right: 2px solid #1e3a8a; /* Borde azul */
             color: #555;
             font-weight: 500;
         }
@@ -87,8 +89,8 @@
         }
 
         .password-container {
-            border: 2px solid #ddd; /* Marco para contraseña */
-            border-radius: 8px;
+            border: 2px solid #1e3a8a; /* Borde azul */
+            border-radius: 0px; /* Puntas cuadradas */
             overflow: hidden;
             transition: border-color 0.3s;
         }
@@ -98,10 +100,10 @@
         }
 
         .login-btn {
-            background-color: #1e3a8a; /* Azul más claro */
+            background-color: #1e3a8a;
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 0px; /* Puntas cuadradas */
             padding: 16px;
             width: 100%;
             font-size: 18px;
@@ -153,7 +155,6 @@
     </div>
 
     <script>
-        // Pequeño script para mejorar la experiencia
         document.addEventListener('DOMContentLoaded', function() {
             const inputs = document.querySelectorAll('input');
             inputs.forEach(input => {
@@ -162,7 +163,7 @@
                 });
                 
                 input.addEventListener('blur', function() {
-                    this.parentElement.style.borderColor = '#ddd';
+                    this.parentElement.style.borderColor = '#1e3a8a';
                 });
             });
         });
